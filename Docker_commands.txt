@@ -20,5 +20,13 @@ docker-compose up -d nginx mysql phpmyadmin
 
 Laravel workspace:
 
+php artisan make:auth
+php artisan migrate:refresh
+
 rm -r vendor
 composer update
+
+phpunit
+
+npm install
+npm run dev
