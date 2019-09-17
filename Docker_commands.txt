@@ -1,0 +1,32 @@
+mysql -u root -p
+root
+
+########################
+
+Create or alter users:
+
+USE information_schema;
+//CREATE USER 'default'@'localhost' IDENTIFIED WITH mysql_native_password BY 'secret';
+ALTER USER 'default'@'localhost' IDENTIFIED WITH mysql_native_password BY 'secret';
+ALTER USER 'default'@'%' IDENTIFIED WITH mysql_native_password BY 'secret';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root';
+
+
+Running Laravel:
+
+docker-compose up -d nginx mysql phpmyadmin
+
+
+Laravel workspace:
+
+php artisan make:auth
+php artisan migrate:refresh
+
+rm -r vendor
+composer update
+
+phpunit
+
+npm install
+npm run dev
