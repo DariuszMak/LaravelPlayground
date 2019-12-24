@@ -13,12 +13,17 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root';
 
 
-Running Laravel:
+Running Laravel in Docker:
 
 docker-compose up -d nginx mysql phpmyadmin
 
 
-Laravel workspace:
+Additional commands:
+
+docker-compose build --no-cache
+
+
+Laradock workspace (attach shell in VS Code):
 
 php artisan make:auth
 php artisan migrate:refresh
@@ -28,5 +33,6 @@ composer update
 
 phpunit
 
+rm -r node_modules
 npm install
 npm run dev
