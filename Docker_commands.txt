@@ -1,26 +1,12 @@
-mysql -u root -p
-root
-
 ########################
-
-Create or alter users:
-
-USE information_schema;
-//CREATE USER 'default'@'localhost' IDENTIFIED WITH mysql_native_password BY 'secret';
-ALTER USER 'default'@'localhost' IDENTIFIED WITH mysql_native_password BY 'secret';
-ALTER USER 'default'@'%' IDENTIFIED WITH mysql_native_password BY 'secret';
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
-ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root';
-
 
 Running Laravel in Docker:
 
 docker-compose up -d nginx mysql phpmyadmin
 
+or
 
-Additional commands:
-
-docker-compose build --no-cache
+docker-compose up -d --force-recreate --always-recreate-deps nginx mysql phpmyadmin
 
 
 Laradock workspace (attach shell in VS Code):
@@ -33,6 +19,24 @@ composer update
 
 phpunit
 
-rm -r node_modules
+rm -rf node_modules
+rm package-lock.json yarn.lock
+npm cache clear --force
 npm install
-npm run dev
+
+
+ADDITIONAL COMMANDS:
+
+docker-compose build --no-cache
+
+Create or alter users:
+
+mysql -u root -p
+root
+
+USE information_schema;
+//CREATE USER 'default'@'localhost' IDENTIFIED WITH mysql_native_password BY 'secret';
+ALTER USER 'default'@'localhost' IDENTIFIED WITH mysql_native_password BY 'secret';
+ALTER USER 'default'@'%' IDENTIFIED WITH mysql_native_password BY 'secret';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root';
